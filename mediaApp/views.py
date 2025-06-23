@@ -44,7 +44,7 @@ def home_view(request):
             'p_text': 'Delivering timely, accurate, and unbiased news to over 1.5 million people.'
         },
         {
-            'image_url': static('images/officePc.jpg'),
+            'image_url': static('images/office.jpg'),
             'h1_text': 'Building Digital Futures',
             'h2_text': 'Expert Web & System Development Services.',
             'p_text': 'Creating intuitive websites and robust systems that drive your success.'
@@ -132,7 +132,7 @@ def services_view(request):
         {
             'title': 'Web Development',
             'description': 'Our team builds responsive, high-performance websites tailored precisely to your business needs. Whether you require a dynamic e-commerce platform, a robust corporate site, or an interactive web application, we utilize the latest technologies and best practices to deliver secure, scalable, and user-friendly web solutions that drive engagement and achieve your online objectives.',
-            'image_url': 'images/webDesign.jpg'
+            'image_url': 'images/SoftWareCodingImg.jpg'
         },
         {
             'title': 'System Design',
