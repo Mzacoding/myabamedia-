@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-yl0^s-lny8rqwbtl7e9*j1vdk$g1j)6(mff3n=mnq1@b!g8wm$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
-# myabamediatech/settings.py
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# myabamediatech/settings.pyDEBUG = True 
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'  # Use environment variable for DEBUG setting
+#DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['www-myabamediatech-ac-za.onrender.com', 'localhost', '127.0.0.1']
  
