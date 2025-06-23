@@ -11,4 +11,5 @@ pytz==2025.2
 sqlparse==0.4.4
 typing-extensions==4.7.1
 whitenoise==6.5.0
+legacy-cgi; python_version >= '3.13'
 zipp==3.15.0
