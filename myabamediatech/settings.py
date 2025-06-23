@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path,os
-
+from pathlib import Path
+from pathlib import Path
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,8 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-yl0^s-lny8rqwbtl7e9*j1vdk$g1j)6(mff3n=mnq1@b!g8wm$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+import os
+# myabamediatech/settings.py
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 
@@ -80,7 +82,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+import os
+import dj_database_url # Add this import at the top
 
+ 
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'),
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -119,6 +131,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' # <--- UPDATED: Using Path object's / ope
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Email Configuration
