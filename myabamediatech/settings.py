@@ -29,7 +29,7 @@ import os
 # myabamediatech/settings.py
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['https://www-myabamediatech-ac-za.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['www-myabamediatech-ac-za.onrender.com', 'localhost', '127.0.0.1']
  
 
 # Application definition
