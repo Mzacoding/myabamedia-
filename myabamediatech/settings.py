@@ -27,9 +27,10 @@ SECRET_KEY = 'django-insecure-yl0^s-lny8rqwbtl7e9*j1vdk$g1j)6(mff3n=mnq1@b!g8wm$
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 # myabamediatech/settings.py
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['https://www-myabamediatech-ac-za.onrender.com', 'localhost', '127.0.0.1']
+ 
 
 # Application definition
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'myabamediatech.urls'
 
 TEMPLATES = [
@@ -77,13 +79,7 @@ WSGI_APPLICATION = 'myabamediatech.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+ 
  
 
 DATABASES = {
@@ -121,18 +117,32 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
+
+ 
 STATICFILES_DIRS = [
     BASE_DIR / 'static', # <--- UPDATED: Using Path object's / operator
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles' # <--- UPDATED: Using Path object's / operator
+# settings.py
 
+# ... other settings ...
+
+STATIC_URL = '/static/' # <--- THIS LINE IS ABSOLUTELY REQUIRED
+
+# If you also have media files, you'd add:
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# And also your STATIC_ROOT for collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# ... other settings ...
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
+ 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
