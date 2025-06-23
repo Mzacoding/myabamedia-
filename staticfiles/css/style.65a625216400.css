@@ -104,7 +104,7 @@ body.no-scroll {
 /* Hero Section */
 .hero {
     /* Background is now set dynamically by JavaScript */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/background.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/background.c91ec5686aa3.png") no-repeat center center/cover;
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -346,7 +346,7 @@ body.no-scroll {
 /* Call to Action Section */
 .cta-section {
     padding: 80px 0;
-    background: linear-gradient(rgba(52,152,219,0.8), rgba(52,152,219,0.8)), url('../images/pcGlass.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(52,152,219,0.8), rgba(52,152,219,0.8)), url("../images/pcGlass.23cfdd27ff4b.jpg") no-repeat center center/cover;
     color: #fff;
     text-align: center;
 }
@@ -428,7 +428,7 @@ body.no-scroll {
     position: relative; /* Needed for pseudo-element positioning */
     width: 100%; 
     margin: 0 auto 50px; /* Center the wrapper and add space below */
-    background-image: url('../images/background.png'); /* Corrected relative path */
+    background-image: url("../images/background.c91ec5686aa3.png"); /* Corrected relative path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
