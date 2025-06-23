@@ -14,8 +14,7 @@
         </div>
     </section>
 
-    {# IMPORTANT: This script tag embeds the slides data safely for JavaScript #}
-     {{ slides_data|json_script:"slides-data" }}
+      {{ slides_data|json_script:"slides-data" }}
 
     {# New Section: Who We Are Teaser #}
     <section id="who-we-are" class="who-we-are-section">
@@ -54,7 +53,7 @@
                 {% endfor %}
             </div>
             <div class="text-center">
-                <a href="{% url 'services' %}" class="btn btn-primary">View All Services</a>
+                <a href="{% url 'services' %}" class="btn btn-primary service-button">View All Services</a>
             </div>
         </div>
     </section>

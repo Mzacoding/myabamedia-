@@ -17,7 +17,7 @@ def get_base_context():
         'company_name': 'Myaba Media Tech',
         'email': 'info@myabamediatech.com',
         'phone': '+27 81 410 9337',
-        'address': 'University Rd, Hatfield, Pretoria, 0083',
+        'address': '29 GELDENHUYS DELMAS',
     }
 
 def home_view(request):
@@ -72,11 +72,16 @@ def home_view(request):
                 'description': 'Delivering timely, accurate, and unbiased news through The Highveld Chronicle.',
                 'icon_class': 'fas fa-newspaper'
             },
+            {
+            'title': 'Digital Marketing Strategies',
+            'description': 'Crafting tailored online campaigns to boost your brand\'s visibility and engagement across all platforms.',
+            'icon_class': 'fas fa-bullhorn'
+           },
         ],
         'testimonials': [
             {
                 'quote': 'Myaba Media Tech transformed our online presence. Their web development is top-notch!',
-                'author': 'Client A, Local Business Owner'
+                'author': 'Nyiko Mkansi, Local Business Owner'
             },
             {
                 'quote': 'The Highveld Chronicle provides essential community news. Highly reliable and informative.',
@@ -84,8 +89,12 @@ def home_view(request):
             },
             {
                 'quote': 'Exceptional graphic design service. They truly understood our vision and brought it to life.',
-                'author': 'Client C, Startup Founder'
+                'author': 'Meisie M, Startup Founder'
             },
+            {
+            'quote': 'Our website traffic and lead generation have seen a remarkable increase since their team revamped our online presence. The development process was seamless, and their technical expertise is truly unmatched.',
+            'author': 'Alex M., E-commerce Manager'
+            }
         ]
     }
     return render(request, 'home.html', context)  
