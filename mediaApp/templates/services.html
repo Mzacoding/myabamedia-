@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services | {{ company_name }}{% endblock %}
+
+{% block content %}
+    <section id="services" class="services">
+        <div class="container">
+            <div class="services-title-wrapper">
+                <h3 class="services-title-bg">Our Services</h3>
+            </div>
+            <div class="services-grid">
+                {% for service in services %}
+                <div class="service-item {% if forloop.counter|divisibleby:2 %}even-layout{% else %}odd-layout{% endif %}">
+                    <div class="service-content-wrapper">
+                        <div class="service-image">
+                            <img src="{% static service.image_url %}" alt="{{ service.title }}" onerror="this.onerror=null;this.src='https://placehold.co/200x150/e0e0e0/333333?text={{ service.title|urlencode }}';" class="img-fluid">
+                        </div>
+                        <div class="service-text-content">
+                            <h4>{{ service.title }}</h4>
+                            <p>{{ service.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

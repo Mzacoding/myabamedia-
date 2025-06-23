@@ -1,0 +1,89 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | {{ company_name}}{% endblock %}
+
+{% block content %}
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1 class="dynamic-h1"></h1>
+            <h2 class="dynamic-h2"></h2>
+            <p class="dynamic-p"></p>
+            <a href="{% url 'about' %}" class="btn btn-primary">Learn More About Us</a>
+        </div>
+    </section>
+
+    {# IMPORTANT: This script tag embeds the slides data safely for JavaScript #}
+     {{ slides_data|json_script:"slides-data" }}
+
+    {# New Section: Who We Are Teaser #}
+    <section id="who-we-are" class="who-we-are-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who We Are</h2>
+                <p>Empowering businesses and communities through innovative ICT and impactful media.</p>
+            </div>
+            <div class="who-we-are-content">
+                <div class="who-we-are-text">
+                    <p>{{ company_name }} is a dynamic company founded in {{ founded_year }}, deeply committed to delivering exceptional value in both Information and Communication Technology (ICT) and Media & Publishing.</p>
+                    <p>As the proud parent company of **{{ newspaper_name }}**, we are at the forefront of local news dissemination in the {{ district }}, reaching over {{ population_coverage }} people. Our mission is to bridge the digital divide while providing reliable and engaging content that fosters informed and connected communities.</p>
+                    <a href="{% url 'about' %}" class="btn btn-secondary">Discover Our Story</a>
+                </div>
+                <div class="who-we-are-image">
+                    <img src="{% static 'images/screenImg.jpg' %}" alt="Myaba Media Tech Team" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# New Section: Our Key Services Highlight #}
+    <section id="key-services" class="key-services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Key Services</h2>
+                <p>Innovative solutions tailored to meet your unique business and communication needs.</p>
+            </div>
+            <div class="key-services-grid">
+                {% for service in key_services %}
+                <div class="key-service-item">
+                    <i class="{{ service.icon_class }}"></i>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{% url 'services' %}" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    {# New Section: Testimonials #}
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Hear directly from those who have experienced the Myaba Media Tech difference.</p>
+            </div>
+            <div class="testimonials-grid">
+                {% for testimonial in testimonials %}
+                <div class="testimonial-item">
+                    <p class="quote">"{{ testimonial.quote }}"</p>
+                    <p class="author">- {{ testimonial.author }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# New Section: Call to Action #}
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Digital Presence?</h2>
+            <p>Connect with Myaba Media Tech today for a consultation tailored to your needs.</p>
+            <a href="{% url 'contact' %}" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+    </section>
+{% endblock %}
+

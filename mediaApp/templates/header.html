@@ -1,0 +1,25 @@
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            {# Replaced text with an image tag for the logo #}
+            {% load static %}
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/MyabaLogo.png' %}" alt="Myaba Media Tech" class="header-logo">
+            </a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About Us</a></li>
+                <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
+                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+        </nav>
+        {# Mobile menu toggle (hamburger icon) #}
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>

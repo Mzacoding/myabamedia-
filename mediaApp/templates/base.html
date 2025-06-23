@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ newspaper_name }} | {{ company_name }}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+        <link rel="icon" href="{% static 'images/MyabaLogo.png' %}" type="image/png"> {# <--- ADD THIS LINE #}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %} {# <--- UPDATED: Include the header partial from mediaApp #}
+
+    <main>
+        {% block content %}
+        {# Content from child templates will go here #}
+        {% endblock %}
+    </main>
+
+    {% include 'footer.html' %} {# Corrected: Include the footer partial from mediaApp #}
+<aside class="side-nav" id="sideNav">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+    <script>
+        // Simple client-side active link highlighting for single-page style if needed,
+        // though Django's URL matching handles it for full page loads.
+        // This JS would be for smoother SPA-like transitions if you implemented them.
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav a');
+            navLinks.forEach(link => {
+                // Ensure a smooth scroll to anchor when clicked
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault(); // Prevent default anchor jump
+
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.header').offsetHeight; // Get header height
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }
+                });
+            });
+// --- Dynamic Hero Slider JavaScript ---
+            // This script handles the dynamic changing of background images and text
+            // for the hero section on the home page.
+            const heroSection = document.getElementById('hero');
+            const heroH1 = heroSection ? heroSection.querySelector('.dynamic-h1') : null;
+            const heroH2 = heroSection ? heroSection.querySelector('.dynamic-h2') : null;
+            const heroP = heroSection ? heroSection.querySelector('.dynamic-p') : null;
+
+
+            let slidesData = [];
+            // Check if the current page is the home page by looking for the slides-data element
+            const slidesDataElement = document.getElementById('slides-data');
+            if (slidesDataElement) {
+                try {
+                    slidesData = JSON.parse(slidesDataElement.textContent);
+                    console.log('Slides Data Loaded:', slidesData);
+                } catch (error) {
+                    console.error('Error parsing slides data:', error);
+                }
+            } else {
+                console.warn('slides-data script element not found. This is expected if not on the home page.');
+            }
+
+            let currentSlideIndex = 0;
+
+            // Only run the slider logic if we are on the home page AND slides data is available
+            if (heroSection && heroH1 && heroH2 && heroP && slidesData.length > 0) {
+                // Function to update the hero content
+                function updateHeroContent() {
+                    const nextSlide = slidesData[currentSlideIndex];
+                    console.log('Updating to slide:', currentSlideIndex, nextSlide);
+
+                    // Apply fade-out effect for text elements
+                    if (heroH1) { heroH1.style.opacity = 0; heroH1.style.transform = 'translateY(20px)'; }
+                    if (heroH2) { heroH2.style.opacity = 0; heroH2.style.transform = 'translateY(20px)'; }
+                    if (heroP) { heroP.style.opacity = 0; heroP.style.transform = 'translateY(20px)'; }
+
+
+                    // Update text content
+                    if (heroH1) heroH1.textContent = nextSlide.h1_text;
+                    if (heroH2) heroH2.textContent = nextSlide.h2_text;
+                    if (heroP) heroP.textContent = nextSlide.p_text;
+
+
+                    // Set the new background image with a smooth transition
+                    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${nextSlide.image_url}')`;
+
+                    // Staggered fade-in for text elements
+                    const textAnimationStartDelay = 1000; // Delay before text animation starts (after background change begins)
+                    const textStaggerDelay = 300; // Delay between each text element appearing
+
+                    setTimeout(() => {
+                        if (heroH1) { heroH1.style.opacity = 1; heroH1.style.transform = 'translateY(0)'; }
+                    }, textAnimationStartDelay);
+                    setTimeout(() => {
+                        if (heroH2) { heroH2.style.opacity = 1; heroH2.style.transform = 'translateY(0)'; }
+                    }, textAnimationStartDelay + textStaggerDelay);
+                    setTimeout(() => {
+                        if (heroP) { heroP.style.opacity = 1; heroP.style.transform = 'translateY(0)'; }
+                    }, textAnimationStartDelay + (textStaggerDelay * 2));
+                    // The button is now always visible and does not animate with the text
+
+
+                    currentSlideIndex = (currentSlideIndex + 1) % slidesData.length;
+                    console.log('Text updated and faded in with staggered animation.');
+                }
+
+                // Initial content load
+                updateHeroContent();
+
+                // Set interval for changing content
+                // Increased duration from 5000ms to 8000ms for a more relaxed pace
+                setInterval(updateHeroContent, 8000); // Changed to 8 seconds
+            } else {
+                console.warn('Hero section elements or slides data not found. Slider will not run.');
+                console.log('heroSection:', heroSection);
+                console.log('heroH1:', heroH1);
+                console.log('heroH2:', heroH2);
+                console.log('heroP:', heroP);
+                console.log('slidesData.length:', slidesData.length);
+            }
+
+            // --- Mobile Navigation JavaScript ---
+            const menuToggle = document.getElementById('menuToggle');
+            const sideNav = document.getElementById('sideNav');
+            const overlay = document.getElementById('overlay');
+            // The sideNavLinks query is now guarded to prevent errors if sideNav is null
+            const sideNavLinks = sideNav ? sideNav.querySelectorAll('a') : [];
+
+            function toggleMenu() {
+                // Add checks to ensure elements exist before toggling classes
+                if (menuToggle) menuToggle.classList.toggle('open');
+                if (sideNav) sideNav.classList.toggle('open');
+                if (overlay) overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', toggleMenu);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', toggleMenu); // Close when clicking outside
+            }
+
+            // Close side nav when a link is clicked (for single-page navigation)
+            sideNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (sideNav && sideNav.classList.contains('open')) { // Ensure sideNav exists before checking class
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

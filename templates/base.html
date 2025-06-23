@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ newspaper_name }} | {{ company_name }}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %} {# Include the header partial here #}
+
+    <main>
+        {% block content %}
+       
+        
+        {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+
+    <script>
+     
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav a');
+            navLinks.forEach(link => {
+                // Ensure a smooth scroll to anchor when clicked
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault(); // Prevent default anchor jump
+
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.header').offsetHeight; // Get header height
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }
+                });
+            });
+ 
+        });
+    </script>
+</body>
+</html>

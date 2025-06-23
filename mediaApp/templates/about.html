@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | {{ newspaper_name }}{% endblock %}
+
+{% block content %}
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About {{ company_name }} & The Highveld Chronicle</h3>
+                    <p><strong>{{ company_name }}</strong> is a pioneering entity established in {{ founded_year }}, driven by a deep passion for business and a commitment to creating significant economic value. We pride ourselves on maintaining an unwavering customer-centric approach in every venture.</p>
+                    <p>Our business uniquely spans two critical domains: **ICT Solutions** and **Media & Publishing**. In the realm of ICT, Myaba Media Tech specializes in delivering robust and scalable technology solutions, including web development, system design, system modeling, and business website creation. We empower enterprises with the digital tools necessary to streamline operations, enhance online presence, and achieve their strategic objectives in an ever-evolving technological landscape.</p>
+                    <p>Simultaneously, under the **Media & Publishing** arm, we are the proud parent company of **{{ newspaper_name }}**. Officially established in May {{ newspaper_established_year }}, our local community newspaper serves the Mpumalanga Highveld Area, covering at least 80% of the {{ district }} with a vibrant population of over 1.5 million people. We are dedicated to providing timely, accurate, and unbiased news and community updates, fostering informed citizens and connecting the pulse of the Highveld through responsible journalism and engaging content.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{% static 'images/office.jpg' %}" alt="Myaba Media Tech office" class="img-fluid">
+                
+            </div>
+        </div>
+    </section>
+{% endblock %}
