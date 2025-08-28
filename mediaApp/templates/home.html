@@ -7,10 +7,26 @@
 {% block content %}
     <section id="hero" class="hero">
         <div class="container">
-            <h1 class="dynamic-h1"></h1>
+            <h1 class="dynamic-h1 typing-text"></h1>
             <h2 class="dynamic-h2"></h2>
             <p class="dynamic-p"></p>
-            <a href="{% url 'about' %}" class="btn btn-primary">Learn More About Us</a>
+            <a href="{% url 'about' %}" class="btn btn-modern">Learn More About Us</a>
+            
+            <!-- Stats Section -->
+            <div class="hero-stats" style="margin-top: 60px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
+                    <div class="stats-counter" data-target="500">0</div>
+                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Projects Completed</div>
+                </div>
+                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
+                    <div class="stats-counter" data-target="150">0</div>
+                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Happy Clients</div>
+                </div>
+                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
+                    <div class="stats-counter" data-target="8">0</div>
+                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Years Experience</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -45,7 +61,7 @@
             </div>
             <div class="key-services-grid">
                 {% for service in key_services %}
-                <div class="key-service-item">
+                <div class="key-service-item interactive-card hover-lift">
                     <i class="{{ service.icon_class }}"></i>
                     <h3>{{ service.title }}</h3>
                     <p>{{ service.description }}</p>
@@ -53,7 +69,7 @@
                 {% endfor %}
             </div>
             <div class="text-center">
-                <a href="{% url 'services' %}" class="btn btn-primary service-button">View All Services</a>
+                <a href="{% url 'services' %}" class="btn btn-modern service-button">View All Services</a>
             </div>
         </div>
     </section>
@@ -67,7 +83,7 @@
             </div>
             <div class="testimonials-grid">
                 {% for testimonial in testimonials %}
-                <div class="testimonial-item">
+                <div class="testimonial-item glass hover-lift">
                     <p class="quote">"{{ testimonial.quote }}"</p>
                     <p class="author">- {{ testimonial.author }}</p>
                 </div>
@@ -81,7 +97,7 @@
         <div class="container">
             <h2>Ready to Transform Your Digital Presence?</h2>
             <p>Connect with Myaba Media Tech today for a consultation tailored to your needs.</p>
-            <a href="{% url 'contact' %}" class="btn btn-primary">Get a Free Quote</a>
+            <a href="{% url 'contact' %}" class="btn btn-modern">Get a Free Quote</a>
         </div>
     </section>
 {% endblock %}

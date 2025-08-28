@@ -1,12 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.templatetags.static import static
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+from django.contrib import messages
+from django.http import HttpResponseServerError, JsonResponse
+from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
+from django.core.exceptions import ValidationError
+from django.views.decorators.http import require_http_methods
+import logging
+from .forms import ContactForm
+from .models import Service, Testimonial, NewsArticle
 
-from django.shortcuts import render, redirect # Import redirect
-from django.templatetags.static import static
-from django.core.mail import send_mail # Import send_mail
-from django.conf import settings # Import settings to get DEFAULT_FROM_EMAIL
-from django.contrib import messages # Import messages framework
-from .forms import ContactForm # Import your new ContactForm
+# Configure logging
+logger = logging.getLogger(__name__)
 def get_base_context():
     """
     Returns common context data used across multiple templates.
@@ -20,6 +28,7 @@ def get_base_context():
         'address': '29 GELDENHUYS DELMAS',
     }
 
+@cache_page(60 * 15)  # Cache for 15 minutes
 def home_view(request):
     """
     Renders the main home page with dynamic hero content.
@@ -101,6 +110,7 @@ def home_view(request):
 
 
 
+@cache_page(60 * 30)  # Cache for 30 minutes
 def about_view(request):
     """
     Renders the About Us page.
@@ -114,6 +124,7 @@ def about_view(request):
     }
     return render(request, 'about.html', context)
 
+@cache_page(60 * 30)  # Cache for 30 minutes
 def services_view(request):
     """
     Renders the Our Services page with new image-based services.
@@ -161,50 +172,142 @@ def services_view(request):
     }
     return render(request, 'services.html', context) 
 
+@csrf_protect
 def contact_view(request):
     """
-    Renders the Contact page and handles form submissions.
+    Professional contact page with enhanced error handling and security.
     """
-    # Get base context data for the page
     context = get_base_context()
-
+    
     if request.method == 'POST':
-        # If the request is POST, it means the form was submitted
-        form = ContactForm(request.POST) # Create a form instance with submitted data
+        form = ContactForm(request.POST)
+        
         if form.is_valid():
-            # If the form data is valid, process it
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-
-            # Construct the email message
-            email_subject = f"Website Contact Form: {subject} from {name}"
-            email_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-            recipient_list = [settings.DEFAULT_FROM_EMAIL] # Send to your configured email
-
             try:
-                # Send the email
-                send_mail(
-                    email_subject,
-                    email_message,
-                    settings.DEFAULT_FROM_EMAIL, # From email (should be your configured website email)
-                    recipient_list,
-                    fail_silently=False, # Set to False to raise exceptions on email sending errors
-                )
-                messages.success(request, 'Your message has been sent successfully!')
-                return redirect('contact') # Redirect to clear the form and show success message
-            except Exception as e:
-                # If there's an error sending email, add an error message
-                messages.error(request, f'There was an error sending your message. Please try again later. ({e})')
-                print(f"Email sending error: {e}") # Log the error for debugging
-        else:
-            # If the form is not valid, add an error message
-            messages.error(request, 'Please correct the errors in the form.')
-    else:
-        # If the request is GET, display an empty form
-        form = ContactForm()
+                # Extract cleaned data
+                name = form.cleaned_data['name']
+                email = form.cleaned_data['email']
+                subject = form.cleaned_data['subject']
+                message = form.cleaned_data['message']
+                
+                # Construct professional email
+                email_subject = f"[Myaba Media Tech] New Contact: {subject}"
+                email_message = f"""
+New contact form submission from Myaba Media Tech website:
 
-    # Add the form instance to the context for rendering
+From: {name}
+Email: {email}
+Subject: {subject}
+
+Message:
+{message}
+
+---
+This message was sent from the Myaba Media Tech contact form.
+Reply directly to this email to respond to the sender.
+"""
+                
+                # Send email with enhanced error handling
+                send_mail(
+                    subject=email_subject,
+                    message=email_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.DEFAULT_FROM_EMAIL],
+                    reply_to=[email],  # Allow direct reply to sender
+                    fail_silently=False,
+                )
+                
+                # Log successful submission
+                logger.info(f"Contact form submitted successfully by {name} ({email})")
+                
+                # Success message and redirect
+                messages.success(
+                    request, 
+                    'Thank you for your message! We\'ll get back to you within 24 hours.'
+                )
+                return redirect('contact')
+                
+            except BadHeaderError:
+                logger.warning(f"Bad header detected in contact form from {email}")
+                messages.error(
+                    request, 
+                    'Invalid header detected. Please check your input and try again.'
+                )
+                
+            except Exception as e:
+                logger.error(f"Email sending failed: {str(e)} - From: {email}")
+                messages.error(
+                    request,
+                    'We\'re experiencing technical difficulties. Please try again later or contact us directly.'
+                )
+        else:
+            # Form validation failed
+            logger.info(f"Contact form validation failed: {form.errors}")
+            messages.error(
+                request, 
+                'Please correct the errors below and try again.'
+            )
+    else:
+        form = ContactForm()
+    
     context['form'] = form
-    return render(request, 'contact.html', context)
+
+
+
+@cache_page(60 * 30)
+def portfolio_view(request):
+    """Portfolio page with featured projects."""
+    context = get_base_context()
+    return render(request, 'portfolio.html', context)
+
+
+@require_http_methods(["GET"])
+def api_search(request):
+    """API endpoint for search functionality."""
+    query = request.GET.get('q', '').strip()
+    
+    if len(query) < 2:
+        return JsonResponse({'results': []})
+    
+    results = []
+    
+    # Search services
+    services = Service.objects.filter(
+        title__icontains=query,
+        is_active=True
+    )[:3]
+    
+    for service in services:
+        results.append({
+            'title': service.title,
+            'description': service.short_description or service.description[:100],
+            'url': '/services/',
+            'type': 'service'
+        })
+    
+    # Search news articles
+    articles = NewsArticle.objects.filter(
+        title__icontains=query,
+        is_published=True
+    )[:3]
+    
+    for article in articles:
+        results.append({
+            'title': article.title,
+            'description': article.excerpt,
+            'url': f'/news/{article.slug}/',
+            'type': 'news'
+        })
+    
+    return JsonResponse({'results': results})
+
+
+@cache_page(60 * 60)
+def news_view(request):
+    """News listing page."""
+    articles = NewsArticle.objects.filter(is_published=True)[:10]
+    context = {
+        **get_base_context(),
+        'articles': articles
+    }
+    return render(request, 'news.html', context)

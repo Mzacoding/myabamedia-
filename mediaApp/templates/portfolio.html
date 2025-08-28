@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio - {{ company_name }}{% endblock %}
+
+{% block content %}
+<section class="portfolio-hero parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/PcCoding.jpg' %}');">
+    <div class="container">
+        <h1 class="text-gradient">Our Portfolio</h1>
+        <p style="color: white; font-size: 1.2rem;">Showcasing our best work and client success stories</p>
+    </div>
+</section>
+
+<section class="portfolio-grid" style="padding: 80px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>A selection of our most impactful work across various industries</p>
+        </div>
+        
+        <div class="filter-tabs" style="text-align: center; margin-bottom: 50px;">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="design">Graphic Design</button>
+            <button class="filter-btn" data-filter="news">News & Media</button>
+        </div>
+        
+        <div class="portfolio-items" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+            <div class="portfolio-item interactive-card" data-category="web">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/ecommence.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Modern online store with payment integration and inventory management</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-primary">Django</span>
+                        <span class="badge badge-success">E-commerce</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item interactive-card" data-category="design">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/GraphicDesign.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>Brand Identity Design</h3>
+                    <p>Complete brand makeover including logo, business cards, and marketing materials</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-warning">Branding</span>
+                        <span class="badge badge-primary">Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item interactive-card" data-category="news">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/news.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>The Highveld Chronicle</h3>
+                    <p>Digital news platform serving the Nkangala District Municipality</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-danger">News</span>
+                        <span class="badge badge-primary">Publishing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item interactive-card" data-category="web">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/WebDesign.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>Corporate Website</h3>
+                    <p>Professional business website with CMS and SEO optimization</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-primary">Corporate</span>
+                        <span class="badge badge-success">SEO</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item interactive-card" data-category="design">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/Office.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>Marketing Campaign</h3>
+                    <p>Comprehensive digital marketing campaign with social media graphics</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-warning">Marketing</span>
+                        <span class="badge badge-primary">Social Media</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item interactive-card" data-category="web">
+                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/system.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                <div class="portfolio-content" style="padding: 25px;">
+                    <h3>System Integration</h3>
+                    <p>Custom software solution for business process automation</p>
+                    <div class="portfolio-tags">
+                        <span class="badge badge-danger">System</span>
+                        <span class="badge badge-success">Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Let's discuss how we can bring your vision to life</p>
+        <a href="{% url 'contact' %}" class="btn btn-modern">Get Started Today</a>
+    </div>
+</section>
+
+<style>
+.filter-btn {
+    background: white;
+    border: 2px solid #667eea;
+    color: #667eea;
+    padding: 10px 20px;
+    margin: 0 10px 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.portfolio-item {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.portfolio-item.hidden {
+    display: none;
+}
+
+.portfolio-tags {
+    margin-top: 15px;
+}
+
+.portfolio-tags .badge {
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
+            
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.classList.remove('hidden');
+                    item.style.display = 'block';
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

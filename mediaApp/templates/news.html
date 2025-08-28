@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}News - {{ newspaper_name }}{% endblock %}
+
+{% block content %}
+<section class="news-hero parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/news.jpg' %}');">
+    <div class="container">
+        <h1 class="text-gradient">{{ newspaper_name }}</h1>
+        <p style="color: white; font-size: 1.2rem;">Your trusted source for local news and community updates</p>
+    </div>
+</section>
+
+<section class="news-content" style="padding: 80px 0;">
+    <div class="container">
+        <div class="section-header">
+            <h2>Latest News</h2>
+            <p>Stay informed with the latest happenings in the Nkangala District Municipality</p>
+        </div>
+        
+        <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+            {% for article in articles %}
+            <article class="news-item interactive-card hover-lift">
+                {% if article.featured_image %}
+                <div class="news-image" style="height: 200px; background: url('{{ article.featured_image.url }}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                {% else %}
+                <div class="news-image" style="height: 200px; background: url('{% static 'images/newspaper.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
+                {% endif %}
+                
+                <div class="news-content" style="padding: 25px;">
+                    <div class="news-meta" style="margin-bottom: 15px;">
+                        <span class="badge badge-primary">{{ article.published_at|date:"M d, Y" }}</span>
+                        <span class="badge badge-secondary">{{ article.author }}</span>
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: #2c3e50;">{{ article.title }}</h3>
+                    <p style="color: #666; line-height: 1.6;">{{ article.excerpt }}</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn btn-modern" style="font-size: 0.9rem; padding: 8px 20px;">Read More</a>
+                    </div>
+                </div>
+            </article>
+            {% empty %}
+            <div class="col-12 text-center" style="grid-column: 1 / -1;">
+                <div class="glass" style="padding: 60px; border-radius: 20px;">
+                    <i class="fas fa-newspaper" style="font-size: 4rem; color: #667eea; margin-bottom: 20px;"></i>
+                    <h3>Coming Soon</h3>
+                    <p>We're preparing exciting news content for you. Check back soon!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if articles %}
+        <div class="text-center" style="margin-top: 50px;">
+            <a href="#" class="btn btn-modern">Load More Articles</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="newsletter-signup" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 0; color: white;">
+    <div class="container text-center">
+        <h2>Stay Updated</h2>
+        <p style="margin-bottom: 30px;">Subscribe to our newsletter for the latest news and updates</p>
+        
+        <form class="newsletter-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 15px;">
+            <input type="email" placeholder="Enter your email address" style="flex: 1; padding: 15px; border: none; border-radius: 25px; outline: none;">
+            <button type="submit" class="btn" style="background: white; color: #667eea; border: none; padding: 15px 30px; border-radius: 25px; font-weight: 600;">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<style>
+.news-meta .badge {
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.newsletter-form input:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+</style>
+{% endblock %}

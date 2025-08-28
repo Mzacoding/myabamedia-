@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Page Not Found - {{ company_name }}{% endblock %}
+
+{% block meta_description %}The page you're looking for could not be found. Return to Myaba Media Tech homepage or contact us for assistance.{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="container">
+        <div class="error-content">
+            <div class="error-image">
+                <img src="{% static 'images/MyabaLogo.png' %}" alt="Myaba Media Tech Logo" class="error-logo">
+            </div>
+            
+            <div class="error-text">
+                <h1 class="error-code">404</h1>
+                <h2 class="error-title">Page Not Found</h2>
+                <p class="error-description">
+                    We're sorry, but the page you're looking for doesn't exist or has been moved. 
+                    This might have happened because:
+                </p>
+                
+                <ul class="error-reasons">
+                    <li>The URL was typed incorrectly</li>
+                    <li>The page has been moved or deleted</li>
+                    <li>You followed an outdated link</li>
+                </ul>
+                
+                <div class="error-actions">
+                    <a href="{% url 'home' %}" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Return Home
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                </div>
+                
+                <div class="error-search">
+                    <p>Or try searching for what you need:</p>
+                    <div class="search-suggestions">
+                        <a href="{% url 'services' %}" class="suggestion-link">Our Services</a>
+                        <a href="{% url 'about' %}" class="suggestion-link">About Us</a>
+                        <a href="{% url 'contact' %}" class="suggestion-link">Contact Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.error-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #3498db;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.error-reasons {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.error-reasons li {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.error-actions {
+    margin: 30px 0;
+}
+
+.error-actions .btn {
+    margin: 0 10px 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+
+.error-search {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+
+.search-suggestions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.suggestion-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: white;
+    color: #3498db;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #3498db;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.suggestion-link:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .error-code {
+        font-size: 5rem;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+    }
+    
+    .error-actions .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .search-suggestions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .suggestion-link {
+        width: 200px;
+        text-align: center;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,1414 @@
+/* Universal Box Sizing */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;  
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    background-color: #f8f9fa;  
+    padding-top: 70px;  
+    overflow-x: hidden;  
+}
+
+/* Added for no-scroll on body when side nav is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Basic Container for consistent content width */
+.container {
+    width: 100%;
+    max-width: 1100px;  
+    margin: 0 auto;   
+    padding: 0 15px;  
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;  
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.95rem;  
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: #2ecc71;  
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Header Styles (apply to h2 and p under .section-header) */
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;  
+    padding: 0 10px; 
+}
+
+.section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;  
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 0.95rem;  
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+    background-color: #fff;
+    padding: 10px 15px;  
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;  
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;  
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Styling for the logo image */
+.header-logo {
+    height: 40px;  
+    width: auto;  
+    vertical-align: middle;  
+}
+
+.logo a:hover {
+    color: #3498db;
+}
+
+/* Main navigation (hidden by default on mobile) */
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none; 
+}
+
+.nav li {
+    margin-left: 20px; 
+}
+
+.nav a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #555;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+/* Specific style for active nav link */
+.nav a.active {
+    color: #3498db;  
+    font-weight: 600; 
+}
+
+.nav a:hover::after, .nav a.active::after {
+    width: 100%;
+}
+
+
+/* Hero Section */
+.hero {
+    /* Background is now set dynamically by JavaScript */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/background.c91ec5686aa3.png") no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 80px 15px 40px;  
+    min-height: 70vh;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    transition: background-image 1s ease-in-out;
+}
+
+/* Dynamic text elements within hero */
+.hero h1,
+.hero h2,
+.hero p {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0; 
+    transform: translateY(20px); 
+    margin: 0; 
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem; 
+    font-weight: 700;
+    margin-bottom: 10px;  
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+.hero h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;  
+    font-weight: 400;
+    margin-bottom: 10px;  
+    line-height: 1.3;
+    color: #eee;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.hero p {
+    font-size: 0.95rem; 
+    max-width: 500px;  
+    margin: 0 auto 25px;  
+    color: #f0f0f0;
+}
+
+/* "Who We Are" Section Styles */
+.who-we-are-section {
+    padding: 50px 0; /* Default padding for mobile */
+    background-color: #f8f8f8;
+}
+
+.who-we-are-content {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    gap: 25px;  
+}
+
+.who-we-are-text {
+    text-align: center; 
+    max-width: 100%;
+}
+
+.who-we-are-text p {
+    margin-bottom: 10px;  
+    font-size: 0.95rem;  
+    color: #555;
+}
+
+.who-we-are-image {
+    width: 100%;  
+    max-width: 350px;  
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.who-we-are-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px; /* Apply to image itself */
+    transition: transform 0.3s ease;
+}
+
+.who-we-are-image img:hover {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+/* "Key Services" Section Styles */
+.key-services-section {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.key-services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 25px; /* Space between service items */
+    justify-content: center;
+}
+
+.key-service-item {
+    background-color: #fff;
+    padding: 25px 15px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.key-service-item i {
+    font-size: 2.5rem;  
+    color: #3498db;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.key-service-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem; /* Slightly smaller heading */
+    font-weight: 700;
+    margin-bottom: 8px; /* Reduced margin */
+    color: #333;
+}
+
+.key-service-item p {
+    font-size: 0.9rem;  
+    color: #666;
+}
+
+/* Testimonials Section Styles */
+.testimonials-section {
+    padding: 50px 0;
+    background-color: #f2f2f2;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 25px;
+    justify-content: center;
+}
+
+.testimonial-item {
+    background-color: #fff;
+    padding: 25px;  
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;  
+}
+
+.testimonial-item .quote {
+    font-size: 1rem; 
+    font-style: italic;
+    color: #444;
+    margin-bottom: 15px;  
+    line-height: 1.5;
+}
+
+.testimonial-item .author {
+    font-weight: 700;
+    color: #3498db;
+    font-size: 0.85rem; /* Slightly smaller */
+}
+
+/* Call to Action (CTA) Section Styles */
+.cta-section {
+    padding: 50px 15px;  
+    background: linear-gradient(rgba(52,152,219,0.8), rgba(52,152,219,0.8)), url("../images/pcGlass.23cfdd27ff4b.jpg") no-repeat center center/cover; /* Added background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; /* Smaller for very small phones */
+    font-weight: 700;
+    margin-bottom: 15px; /* Reduced margin */
+    line-height: 1.2;
+}
+
+.cta-section p {
+    font-size: 0.95rem; /* Smaller for very small phones */
+    max-width: 600px;
+    margin: 0 auto 25px; /* Reduced margin */
+}
+
+/* About Section */
+.about {
+    padding: 50px 0;  
+    background-color: #fff;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;  
+}
+
+.about-text {
+    flex: 1;
+    min-width: 100%; 
+    font-size: 0.95rem; 
+    line-height: 1.7;
+    color: #555;
+    text-align: center; /* Center text on mobile */
+}
+
+.about-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem; /* Smaller for mobile */
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 100%; /* Full width on mobile */
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 90%; /* Smaller max-width for image on mobile */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Services Section */
+.services {
+    padding: 50px 0; 
+    background-color: #f2f4f7; 
+    text-align: center;
+}
+
+.services h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem; 
+    color: #ffffff; 
+    margin-bottom: 25px;
+    text-align:center ;
+}
+
+ 
+.services-title-wrapper {
+    position: relative; 
+    width: 100%;
+    margin: 0 auto 40px;  
+    background-image: url("../images/background.c91ec5686aa3.png");  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px; 
+    overflow: hidden;  
+    box-shadow: 0 5px 15px rgba(32, 32, 32, 0.1);  
+    z-index: 0; 
+}
+
+.services-title-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36, 36, 36, 0.6);
+    z-index: 1; 
+}
+
+.services-title-bg {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;  
+    font-weight: 700;
+    color: transparent;  
+    -webkit-background-clip: text;  
+    background-clip: text; 
+    margin: 0;  
+    padding: 15px 20px;  
+    white-space: nowrap;  
+    text-shadow: none;  
+    position: relative;  
+    text-align: center;
+    z-index: 2;  
+}
+
+.services-grid {
+    display: block;  
+    padding: 0 10px; 
+}
+.service-button{
+    margin-top: 2rem;
+}
+.service-item {
+    margin-bottom: 40px;  
+    text-align: left;  
+    padding: 20px;  
+    background-color: #fff;  
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* New flex container for image and text content */
+.service-content-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 30px;  
+    flex-direction: column;  
+    text-align: center; 
+    width: 100%; 
+}
+
+.service-image {
+    flex: 0 0 auto;  
+    width: 100%;  
+    max-width: 350px;  
+    height: 200px;  
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    transition: transform 0.3s ease;
+}
+
+.service-item .service-image img:hover {
+    transform: scale(1.05);
+}
+
+.service-text-content {
+    flex: 1; 
+    min-width: 100%;  
+}
+
+.service-item h4 {
+    text-align: center; /* Center text content for stacked items */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; /* Adjusted for mobile */
+    color: #2c3e50;
+    margin-bottom: 15px; /* More space below heading */
+}
+
+.service-item p {
+    text-align: center; /* Center text content for stacked items */
+    font-size: 1rem; /* Adjusted for mobile */
+    color: #666;
+    line-height: 1.7; /* Increased line height for readability */
+}
+
+/* Contact Section */
+.contact {
+    padding: 50px 0; /* Adjusted padding for mobile */
+    background-color: #f8f9fa; /* Base light background */
+    background-image:
+        /* Large, light blue cloud */
+        radial-gradient(ellipse at 20% 10%, rgba(200, 230, 255, 0.7) 0%, rgba(200, 230, 255, 0) 70%),
+        radial-gradient(ellipse at 80% 5%, rgba(200, 230, 255, 0.6) 0%, rgba(200, 230, 255, 0) 60%),
+        /* Medium, slightly darker blue clouds */
+        radial-gradient(ellipse at 50% 15%, rgba(170, 200, 240, 0.8) 0%, rgba(170, 200, 240, 0) 65%),
+        radial-gradient(ellipse at 10% 80%, rgba(150, 190, 230, 0.7) 0%, rgba(150, 190, 230, 0) 75%),
+        /* Smaller, white-ish clouds */
+        radial-gradient(ellipse at 90% 70%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%),
+        radial-gradient(ellipse at 40% 90%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+    background-repeat: no-repeat;
+    background-size:
+        60% 50%, /* Large light blue */
+        50% 40%, /* Other large light blue */
+        40% 30%, /* Medium darker blue */
+        45% 35%, /* Other medium darker blue */
+        30% 25%, /* Small white */
+        35% 28%; /* Other small white */
+    background-position:
+        -10% -20%, /* Position large light blue */
+        105% -10%, /* Position other large light blue */
+        50% -50%, /* Position medium darker blue */
+        -15% 100%, /* Position other medium darker blue */
+        110% 80%, /* Position small white */
+        40% 115%; /* Position other small white */
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem; /* Adjusted for mobile */
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 1rem; /* Adjusted for mobile */
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.contact-info p { /* Now for individual lines in the left column */
+    font-size: 1rem; /* Adjusted for mobile */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start; /* Align icon and text at the top */
+    justify-content: flex-start; /* Left align */
+}
+
+.contact-info i {
+    color: #3498db;
+    margin-right: 10px;
+    font-size: 1.2rem; /* Adjusted for mobile */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    padding-top: 2px; /* Small adjustment for icon alignment */
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #2980b9;
+}
+
+.contact-form {
+    max-width: 100%; /* Adjust for grid column */
+    margin: 0; /* Remove auto margin as it's now in a grid cell */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adjusted gap */
+    text-align: left; /* Align form labels/placeholders to left */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* Ensure full width on mobile */
+    padding: 12px; /* Adjusted padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem; /* Adjusted font size */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+.contact-form button {
+    align-self: center; /* Center submit button on mobile */
+}
+
+/* New Social Icons in Contact Section */
+.social-icons-contact {
+    margin-top: 30px; /* Adjusted margin */
+    text-align: center; /* Center align content within this block on mobile */
+}
+
+.social-icons-contact h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem; /* Adjusted for mobile */
+    color: #2c3e50;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.social-links-grid {
+    display: flex;
+    justify-content: center; /* Center social icons on mobile */
+    gap: 15px; /* Adjusted gap */
+    flex-wrap: wrap;
+}
+
+.social-links-grid a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Slightly smaller social icons for mobile */
+    height: 40px;
+    background-color: #f2f4f7;
+    border-radius: 50%;
+    color: #2c3e50;
+    font-size: 1.4rem; /* Adjusted font size */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.social-links-grid a:hover {
+    background-color: #3498db;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(52,152,219,0.3);
+}
+
+/* New Contact Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column on mobile */
+    gap: 40px; /* Space between columns */
+    margin-top: 25px; /* Space below intro text and map */
+    text-align: left; /* Reset text alignment for grid content */
+}
+
+.contact-left, .contact-right {
+    padding: 20px; /* Internal padding for columns */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contact-info-block h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem; /* Adjusted for mobile */
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.contact-info-block p {
+    font-size: 0.95rem; /* Adjusted for mobile */
+    color: #555;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 30px 15px; /* Adjusted padding for mobile */
+    text-align: center;
+    font-size: 0.85rem; /* Adjusted font size for mobile */
+}
+
+.footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Navigation Specific Styles */
+
+/* Hamburger Menu Icon */
+.menu-toggle {
+    display: flex; /* Show by default on mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px; /* Adjusted size */
+    height: 22px; /* Adjusted size */
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the header */
+    padding: 5px; /* Add some clickable area */
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation for the hamburger icon to 'X' */
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Side Navigation Styles */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: -260px; /* Adjusted width for smaller screens */
+    width: 250px; /* Max width for side nav */
+    height: 100%;
+    background-color: #2c3e50; /* Dark background for side nav */
+    padding-top: 60px; /* Space for logo/close button if needed */
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 999; /* Below the header but above content */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align links to the left */
+}
+
+.side-nav.open {
+    right: 0; /* Slide in when open */
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.side-nav li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Subtle separator */
+}
+
+.side-nav li:last-child {
+    border-bottom: none;
+}
+
+.side-nav a {
+    display: block;
+    padding: 12px 20px; /* Adjusted padding */
+    color: #ecf0f1; /* Light text for dark background */
+    text-decoration: none;
+    font-size: 1rem; /* Adjusted font size */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.side-nav a:hover, .side-nav a.active {
+    background-color: #3498db; /* Highlight on hover/active */
+    color: #fff;
+}
+
+/* Overlay for when side nav is open */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent black */
+    z-index: 998; /* Below side nav but above content */
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+/* --- Responsive Design Media Queries --- */
+
+/* Small devices (phones, 320px-575px) - Base styles handle this */
+
+
+/* Small Tablets & Larger Phones (e.g., 390px - 575px width, up to ~767px) */
+@media (min-width: 576px) {
+    .container {
+        padding: 0 20px; /* Standard padding for slightly larger mobiles/small tablets */
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 50px;
+    }
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .header {
+        padding: 15px 20px;
+    }
+    .logo a {
+        font-size: 1.8rem;
+    }
+    .header-logo {
+        height: 50px;
+    }
+
+    .hero {
+        padding: 100px 20px 50px;
+        min-height: 75vh; /* Slightly taller */
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+    .hero p {
+        font-size: 1.05rem;
+    }
+
+    .who-we-are-section,
+    .key-services-section,
+    .testimonials-section,
+    .cta-section,
+    .about,
+    .services,
+    .contact {
+        padding: 60px 0; /* More padding for sections */
+    }
+
+    .who-we-are-text p {
+        font-size: 1rem;
+    }
+    .who-we-are-image {
+        max-width: 400px;
+    }
+
+    .key-service-item {
+        padding: 30px 20px;
+    }
+    .key-service-item i {
+        font-size: 3rem;
+    }
+    .key-service-item h3 {
+        font-size: 1.4rem;
+    }
+    .key-service-item p {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-item .quote {
+        font-size: 1.1rem;
+    }
+    .testimonial-item .author {
+        font-size: 0.9rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2.2rem;
+    }
+    .cta-section p {
+        font-size: 1.05rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+    .about-text h3 {
+        font-size: 2.2rem;
+    }
+    .about-image img {
+        max-width: 100%; /* Allow image to take full container width */
+    }
+
+    .services-title-bg {
+        font-size: 3rem;
+        padding: 20px 30px;
+    }
+    .service-image {
+        height: 250px; /* Taller image on slightly larger screens */
+    }
+    .service-item h4 {
+        font-size: 2rem;
+    }
+    .service-item p {
+        font-size: 1.05rem;
+    }
+
+    .contact h3 {
+        font-size: 2.2rem;
+    }
+    .contact p {
+        font-size: 1.1rem;
+    }
+    .contact-info p {
+        font-size: 1.05rem;
+    }
+    .contact-info i {
+        font-size: 1.3rem;
+    }
+    .social-icons-contact h4 {
+        font-size: 1.5rem;
+    }
+    .social-links-grid a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.6rem;
+    }
+    .contact-form input, .contact-form textarea {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    .footer {
+        padding: 40px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Medium devices (Tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding: 120px 30px 80px;
+        min-height: 60vh;
+    }
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+        max-width: 700px;
+    }
+
+    /* Who We Are section - two columns */
+    .who-we-are-content {
+        flex-direction: row; /* Horizontal layout */
+        text-align: left; /* Align text left */
+        align-items: center;
+        gap: 40px; /* Increased gap */
+    }
+    .who-we-are-text {
+        flex: 1; /* Take available space */
+        min-width: 400px; /* Allow text to be wider */
+        padding-right: 30px; /* Space between text and image */
+    }
+    .who-we-are-image {
+        flex: 0 0 45%; /* Image takes 45% width */
+        max-width: 45%;
+        text-align: right; /* Align image right if text is left */
+    }
+    .who-we-are-text p {
+        font-size: 1.05rem;
+    }
+
+    /* Key Services Grid - 2 columns */
+    .key-services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columns, flexible */
+        gap: 30px;
+    }
+
+    /* Testimonials Grid - 2 columns */
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 2 columns, flexible */
+        gap: 30px;
+    }
+
+    /* CTA Section */
+    .cta-section h2 {
+        font-size: 2.8rem;
+    }
+    .cta-section p {
+        font-size: 1.15rem;
+    }
+
+    /* About Section */
+    .about-content {
+        gap: 40px;
+    }
+    .about-text {
+        min-width: 400px;
+        text-align: left;
+    }
+    .about-text h3 {
+        font-size: 2.5rem;
+    }
+    .about-text p {
+        font-size: 1.05rem;
+    }
+    .about-image img {
+        max-width: 100%;
+    }
+
+    /* Services Section */
+    .services-title-bg {
+        font-size: 3.5rem;
+    }
+    .service-image {
+        height: 300px; /* Taller images on tablets */
+    }
+    .service-item h4 {
+        font-size: 2.2rem;
+    }
+    .service-item p {
+        font-size: 1.15rem;
+    }
+
+    /* Contact Section */
+    .contact h3 {
+        font-size: 2.5rem;
+    }
+    .contact p {
+        font-size: 1.15rem;
+    }
+    .contact-info p {
+        font-size: 1.1rem;
+    }
+    .social-icons-contact h4 {
+        font-size: 1.8rem;
+    }
+
+    /* Navigation for tablets/small desktops */
+    .menu-toggle {
+        display: none; /* Hide hamburger icon */
+    }
+    .side-nav, .overlay {
+        display: none; /* Hide side nav and overlay */
+    }
+    .nav ul {
+        display: flex; /* Show main navigation */
+    }
+    .nav li a {
+        padding: 10px 15px;
+        color: #333; /* Adjust link color for desktop header */
+        font-weight: bold;
+    }
+    .nav li a:hover {
+        color: #3498db;
+    }
+}
+
+/* Medium Laptops / Desktops (992px and up) */
+@media (min-width: 992px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    /* Header */
+    .header {
+        padding: 20px 0;
+    }
+    .logo a {
+        font-size: 2rem;
+    }
+    .header-logo {
+        height: 50px;
+    }
+    .nav li {
+        margin-left: 40px; /* More spacing for desktop nav items */
+    }
+    .nav a {
+        font-size: 1.1rem;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding: 150px 40px 100px;
+        min-height: 80vh; /* Taller on larger screens */
+    }
+    .hero h1 {
+        font-size: 4rem; /* Larger for medium desktop */
+    }
+    .hero h2 {
+        font-size: 2.3rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+    }
+
+    /* Section Header */
+    .section-header h2 {
+        font-size: 2.8rem;
+    }
+    .section-header p {
+        font-size: 1.1rem;
+    }
+
+    /* Who We Are section */
+    .who-we-are-text {
+        padding-right: 50px;
+    }
+    .who-we-are-image {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    .who-we-are-text p {
+        font-size: 1.05rem;
+    }
+
+    /* Key Services Grid - 3 columns */
+    .key-services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Testimonials Grid - 3 columns */
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* CTA Section */
+    .cta-section h2 {
+        font-size: 3rem;
+    }
+    .cta-section p {
+        font-size: 1.2rem;
+    }
+
+    /* About Section */
+    .about-text {
+        text-align: left; /* Align left on desktop */
+        padding-right: 40px; /* Space from image */
+    }
+    .about-image {
+        text-align: right; /* Align image right on desktop */
+    }
+    .about-text h3 {
+        font-size: 2.8rem;
+    }
+    .about-text p {
+        font-size: 1.1rem;
+    }
+
+    /* Services Section (Specific Layout for Image/Text) */
+    .services-title-bg {
+        font-size: 4rem; /* Larger for desktop heading background */
+    }
+    .service-content-wrapper {
+        flex-direction: row; /* Default to row on desktop */
+        gap: 60px; /* Larger gap */
+        text-align: left; /* Align text left */
+    }
+    .service-image {
+        flex: 1; /* Take flexible space */
+        min-width: 40%; /* Minimum width for image */
+        height: 350px; /* Consistent height for desktop images */
+    }
+    .service-text-content {
+        flex: 1;
+        min-width: 400px; /* Ensure text block isn't too small */
+    }
+    .service-item h4 {
+        font-size: 2.5rem;
+        text-align: left;
+    }
+    .service-item p {
+        font-size: 1.15rem;
+        text-align: left;
+    }
+    .service-item.odd-layout .service-content-wrapper {
+        flex-direction: row-reverse; /* Image right, text left */
+    }
+    .service-item.odd-layout .service-text-content {
+        text-align: right; /* Align text to the right for odd items */
+    }
+
+    /* Contact Section */
+    .contact h3 {
+        font-size: 2.8rem;
+    }
+    .contact p {
+        font-size: 1.1rem;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr 1.5fr; /* Left column (info) smaller, right column (form) larger */
+        align-items: start; /* Align items to the top of their grid cells */
+        gap: 50px;
+    }
+    .contact-info p {
+        font-size: 1.1rem;
+        justify-content: flex-start; /* Ensure left align */
+    }
+    .contact-info i {
+        font-size: 1.4rem;
+    }
+    .contact-form button {
+        align-self: flex-start; /* Align submit button to the left */
+    }
+    .social-icons-contact {
+        text-align: left; /* Left align on desktop */
+    }
+    .social-links-grid {
+        justify-content: flex-start; /* Left align social icons */
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 0;
+        font-size: 0.9rem;
+    }
+}
+
+/* Large Desktops (1200px and up) - Full HD screens */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 50px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 180px 50px 120px;
+        min-height: 85vh;
+    }
+    .hero h1 {
+        font-size: 4.8rem; /* Even larger */
+    }
+    .hero h2 {
+        font-size: 2.6rem;
+    }
+    .hero p {
+        font-size: 1.3rem;
+    }
+
+    /* Section Header */
+    .section-header h2 {
+        font-size: 3.2rem;
+    }
+    .section-header p {
+        font-size: 1.2rem;
+    }
+
+    /* Key Services Grid - Max 4 columns on large screens if desired */
+    .key-services-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns for very large screens */
+    }
+    /* Testimonials Grid - Max 4 columns on large screens if desired */
+    .testimonials-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* CTA Section */
+    .cta-section h2 {
+        font-size: 3.5rem;
+    }
+    .cta-section p {
+        font-size: 1.3rem;
+    }
+
+    /* About Section */
+    .about-text h3 {
+        font-size: 3rem;
+    }
+    .about-text p {
+        font-size: 1.1rem;
+    }
+
+    /* Services Section */
+    .services-title-bg {
+        font-size: 4.5rem;
+    }
+    .service-image {
+        height: 400px; /* Taller images on very large screens */
+    }
+    .service-item h4 {
+        font-size: 2.8rem;
+    }
+    .service-item p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Large Desktops / TVs (1600px and up) - 2K/4K screens */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1400px; /* Allow container to grow even larger */
+        padding: 0 60px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 200px 60px 140px;
+        min-height: 90vh;
+    }
+    .hero h1 {
+        font-size: 5.5rem; /* Max font size */
+    }
+    .hero h2 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.4rem;
+    }
+
+    /* Section Header */
+    .section-header h2 {
+        font-size: 3.5rem;
+    }
+    .section-header p {
+        font-size: 1.3rem;
+    }
+
+    /* CTA Section */
+    .cta-section h2 {
+        font-size: 4rem;
+    }
+    .cta-section p {
+        font-size: 1.4rem;
+    }
+
+    /* About Section */
+    .about-text h3 {
+        font-size: 3.2rem;
+    }
+    .about-text p {
+        font-size: 1.2rem;
+    }
+
+    /* Services Section */
+    .services-title-bg {
+        font-size: 5rem;
+    }
+    .service-image {
+        height: 450px;
+    }
+    .service-item h4 {
+        font-size: 3rem;
+    }
+    .service-item p {
+        font-size: 1.3rem;
+    }
+}
