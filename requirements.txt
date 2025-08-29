@@ -1,55 +1,7 @@
-# Core Django and Web Framework
 Django==5.0.6
-django-environ==0.11.2
 dj-database-url==0.5.0
-
-# Database
 psycopg2-binary==2.9.9
-
-# Static Files and Media
 whitenoise==6.5.0
 Pillow==10.4.0
-
-# Production Server
 gunicorn==23.0.0
-
-# Security and Validation
-django-cors-headers==4.3.1
-django-csp==3.7
-
-# Performance and Caching
-django-redis==5.4.0
-django-compressor==4.4
-
-# Development and Debugging
-django-debug-toolbar==4.2.0
-django-extensions==3.2.3
-
-# Email and Communication
-django-anymail==10.2
-
-# Forms and Validation
-django-crispy-forms==2.1
-crispy-bootstrap5==0.7
-
-# SEO and Analytics
-django-meta==2.4.0
-django-sitemap==2.3
-
-# Utilities
-python-slugify==8.0.1
 requests==2.31.0
-
-# Core Dependencies
-asgiref==3.7.2
-click==8.1.8
-colorama==0.4.6
-importlib-metadata==6.7.0
-packaging==24.0
-pytz==2025.2
-sqlparse==0.4.4
-typing-extensions==4.7.1
-
-
-# Python 3.13+ compatibility
-legacy-cgi; python_version >= '3.13'
