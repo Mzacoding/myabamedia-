@@ -1,0 +1,36 @@
+/* Force remove all icons from service cards */
+.key-service-item i,
+#key-services i,
+figure i {
+    display: none !important;
+}
+
+.key-service-item .fas,
+#key-services .fas,
+figure .fas {
+    display: none !important;
+}
+
+/* Clean service card images */
+#key-services figure {
+    position: relative;
+    height: 192px;
+    overflow: hidden;
+}
+
+#key-services figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#key-services figure .absolute {
+    background: rgba(0,0,0,0.4);
+}
+
+/* Remove any icon containers */
+#key-services .w-16,
+#key-services .w-20,
+#key-services .rounded-full {
+    display: none !important;
+}

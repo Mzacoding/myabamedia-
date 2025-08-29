@@ -5,26 +5,106 @@
 {% block title %}Home | {{ company_name}}{% endblock %}
 
 {% block content %}
-    <section id="hero" class="hero">
-        <div class="container">
-            <h1 class="dynamic-h1 typing-text"></h1>
-            <h2 class="dynamic-h2"></h2>
-            <p class="dynamic-p"></p>
-            <a href="{% url 'about' %}" class="btn btn-modern">Learn More About Us</a>
+    <section class="relative bg-white min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium mb-8">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                    Professional ICT & Media Solutions
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                    We build <span class="text-blue-600">digital products</span> that drive business growth
+                </h1>
+                
+                <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+                    Leading ICT solutions provider in Delmas. We deliver professional web development, 
+                    innovative media services, and comprehensive digital solutions.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="{% url 'services' %}" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                        Our Services
+                    </a>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors">
+                        Get In Touch
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">500+</div>
+                        <p class="text-gray-600 text-sm">Projects Delivered</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">150+</div>
+                        <p class="text-gray-600 text-sm">Happy Clients</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-gray-900 mb-2">8+</div>
+                        <p class="text-gray-600 text-sm">Years Experience</p>
+                    </div>
+                </div>
+            </div>
             
-            <!-- Stats Section -->
-            <div class="hero-stats" style="margin-top: 60px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
-                    <div class="stats-counter" data-target="500">0</div>
-                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Projects Completed</div>
+            <div class="order-1 lg:order-2 relative">
+                <div class="relative">
+                    <img src="{% static 'images/screenImg.jpg' %}" alt="Myaba Media Tech" class="w-full h-auto rounded-2xl shadow-2xl">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-600 rounded-full opacity-10"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-600 rounded-2xl opacity-10"></div>
                 </div>
-                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
-                    <div class="stats-counter" data-target="150">0</div>
-                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Happy Clients</div>
+            </div>
+        </div>
+            
+    </section>
+    
+    <!-- Services Overview -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We provide comprehensive digital services that help businesses grow and succeed in the digital age.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Development</h3>
+                    <p class="text-gray-600">Custom websites and web applications built with modern technologies</p>
                 </div>
-                <div class="stat-item glass" style="padding: 20px; text-align: center; min-width: 150px;">
-                    <div class="stats-counter" data-target="8">0</div>
-                    <div style="color: #fff; font-size: 0.9rem; margin-top: 5px;">Years Experience</div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Graphic Design</h3>
+                    <p class="text-gray-600">Creative visual solutions that capture your brand essence</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">News Publishing</h3>
+                    <p class="text-gray-600">Professional media and publishing services for community engagement</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Digital Marketing</h3>
+                    <p class="text-gray-600">Strategic campaigns to boost your online presence and engagement</p>
                 </div>
             </div>
         </div>
@@ -32,72 +112,127 @@
 
       {{ slides_data|json_script:"slides-data" }}
 
-    {# New Section: Who We Are Teaser #}
-    <section id="who-we-are" class="who-we-are-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Who We Are</h2>
-                <p>Empowering businesses and communities through innovative ICT and impactful media.</p>
-            </div>
-            <div class="who-we-are-content">
-                <div class="who-we-are-text">
-                    <p>{{ company_name }} is a dynamic company founded in {{ founded_year }}, deeply committed to delivering exceptional value in both Information and Communication Technology (ICT) and Media & Publishing.</p>
-                    <p>As the proud parent company of **{{ newspaper_name }}**, we are at the forefront of local news dissemination in the {{ district }}, reaching over {{ population_coverage }} people. Our mission is to bridge the digital divide while providing reliable and engaging content that fosters informed and connected communities.</p>
-                    <a href="{% url 'about' %}" class="btn btn-secondary">Discover Our Story</a>
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                        We are a team of <span class="text-blue-600">digital experts</span> passionate about technology
+                    </h2>
+                    
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Since {{ founded_year }}, we've been delivering exceptional ICT solutions and media services that connect communities and empower businesses in Delmas. Our expertise spans web development, graphic design, news publishing, and digital marketing.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Professional ICT Solutions</h4>
+                                <p class="text-gray-600">Custom web development and system design services</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Media & Publishing</h4>
+                                <p class="text-gray-600">{{ newspaper_name }} - serving {{ population_coverage }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="{% url 'about' %}" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                        Learn More About Us
+                    </a>
                 </div>
-                <div class="who-we-are-image">
-                    <img src="{% static 'images/screenImg.jpg' %}" alt="Myaba Media Tech Team" class="img-fluid">
+                
+                <div class="relative">
+                    <img src="{% static 'images/Office.jpg' %}" alt="Myaba Media Tech Office" class="w-full h-auto rounded-xl shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
-    {# New Section: Our Key Services Highlight #}
-    <section id="key-services" class="key-services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Key Services</h2>
-                <p>Innovative solutions tailored to meet your unique business and communication needs.</p>
-            </div>
-            <div class="key-services-grid">
-                {% for service in key_services %}
-                <div class="key-service-item interactive-card hover-lift">
-                    <i class="{{ service.icon_class }}"></i>
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="text-center">
-                <a href="{% url 'services' %}" class="btn btn-modern service-button">View All Services</a>
-            </div>
-        </div>
-    </section>
+
 
     {# New Section: Testimonials #}
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Our Clients Say</h2>
-                <p>Hear directly from those who have experienced the Myaba Media Tech difference.</p>
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear directly from those who have experienced the Myaba Media Tech difference.</p>
             </div>
-            <div class="testimonials-grid">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {% for testimonial in testimonials %}
-                <div class="testimonial-item glass hover-lift">
-                    <p class="quote">"{{ testimonial.quote }}"</p>
-                    <p class="author">- {{ testimonial.author }}</p>
+                <div class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative">
+                    <div class="absolute top-6 left-8 text-6xl text-primary/20 font-serif">"</div>
+                    <div class="relative z-10 pt-8">
+                        <p class="font-serif text-lg text-gray-700 leading-relaxed mb-6 italic">{{ testimonial.quote }}</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                {{ testimonial.author|first }}
+                            </div>
+                            <div>
+                                <p class="font-sans font-semibold text-gray-900">{{ testimonial.author }}</p>
+                                <p class="text-sm text-gray-500">Verified Client</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </section>
 
-    {# New Section: Call to Action #}
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2>Ready to Transform Your Digital Presence?</h2>
-            <p>Connect with Myaba Media Tech today for a consultation tailored to your needs.</p>
-            <a href="{% url 'contact' %}" class="btn btn-modern">Get a Free Quote</a>
+    {# Call to Action Section #}
+    <section class="relative py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-20 left-20 w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 right-20 w-80 h-80 bg-purple-400 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white text-sm font-medium mb-8">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                Let's Transform Your Business Together
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+                Let's Build Something 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Amazing</span> Together
+            </h2>
+            
+            <p class="text-xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Transform your digital presence with our expert ICT solutions, innovative media services, and cutting-edge web development. Your success story starts here.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="{% url 'contact' %}" class="group relative px-10 py-5 bg-white text-blue-900 font-bold rounded-full hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                    <span class="relative z-10">Start Your Project</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                </a>
+                
+                <a href="{% url 'services' %}" class="group px-10 py-5 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                    View Our Work
+                    <svg class="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+
         </div>
     </section>
 {% endblock %}

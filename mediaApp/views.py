@@ -69,22 +69,26 @@ def home_view(request):
             {
                 'title': 'Web Development',
                 'description': 'Crafting responsive and high-performance websites tailored to your business goals.',
-                'icon_class': 'fas fa-code'
+                'icon_class': 'fas fa-laptop-code',
+                'image_url': 'images/SoftWareCodingImg.jpg'
             },
             {
                 'title': 'Graphic Design',
                 'description': 'Creating stunning visuals and brand identities that resonate with your audience.',
-                'icon_class': 'fas fa-paint-brush'
+                'icon_class': 'fas fa-palette',
+                'image_url': 'images/GraphicDesign.jpg'
             },
             {
                 'title': 'News Publishing',
                 'description': 'Delivering timely, accurate, and unbiased news through The Highveld Chronicle.',
-                'icon_class': 'fas fa-newspaper'
+                'icon_class': 'fas fa-newspaper',
+                'image_url': 'images/news.jpg'
             },
             {
             'title': 'Digital Marketing Strategies',
             'description': 'Crafting tailored online campaigns to boost your brand\'s visibility and engagement across all platforms.',
-            'icon_class': 'fas fa-bullhorn'
+            'icon_class': 'fas fa-chart-line',
+            'image_url': 'images/ecommence.jpg'
            },
         ],
         'testimonials': [
@@ -251,6 +255,7 @@ Reply directly to this email to respond to the sender.
         form = ContactForm()
     
     context['form'] = form
+    return render(request, 'contact.html', context)
 
 
 

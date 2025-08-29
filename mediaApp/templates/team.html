@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Team - {{ company_name }}{% endblock %}
+
+{% block content %}
+<section class="team-hero parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/Office.jpg' %}');">
+    <div class="container">
+        <h1 class="text-gradient">Meet Our Team</h1>
+        <p style="color: white; font-size: 1.2rem;">The talented professionals behind Myaba Media Tech's success</p>
+    </div>
+</section>
+
+<section class="team-content section-padding">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <h2 class="gradient-text">Our Expert Team</h2>
+            <p>Passionate professionals dedicated to delivering exceptional results</p>
+        </div>
+        
+        <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            {% for member in team_members %}
+            <div class="team-member interactive-card hover-lift card-animate">
+                <div class="member-photo" style="height: 250px; background: {% if member.photo %}url('{{ member.photo.url }}'){% else %}linear-gradient(135deg, #667eea, #764ba2){% endif %} center/cover; border-radius: 15px 15px 0 0; position: relative;">
+                    {% if not member.photo %}
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 4rem;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="member-info" style="padding: 25px;">
+                    <h3 style="margin: 0 0 5px 0; color: #2c3e50;">{{ member.name }}</h3>
+                    <p style="color: #667eea; font-weight: 600; margin: 0 0 15px 0;">{{ member.get_position_display }}</p>
+                    
+                    {% if member.bio %}
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">{{ member.bio }}</p>
+                    {% endif %}
+                    
+                    {% if member.skills %}
+                    <div class="member-skills" style="margin-bottom: 20px;">
+                        {% for skill in member.get_skills_list %}
+                        <span class="badge badge-primary" style="margin: 2px; font-size: 0.7rem;">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="member-social" style="display: flex; gap: 10px; justify-content: center;">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="social-link" style="color: #e74c3c; font-size: 1.2rem;"><i class="fas fa-envelope"></i></a>
+                        {% endif %}
+                        {% if member.phone %}
+                        <a href="tel:{{ member.phone }}" class="social-link" style="color: #27ae60; font-size: 1.2rem;"><i class="fas fa-phone"></i></a>
+                        {% endif %}
+                        {% if member.linkedin %}
+                        <a href="{{ member.linkedin }}" target="_blank" class="social-link" style="color: #0077b5; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                        {% if member.twitter %}
+                        <a href="{{ member.twitter }}" target="_blank" class="social-link" style="color: #1da1f2; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center" style="grid-column: 1 / -1;">
+                <div class="glass" style="padding: 60px; border-radius: 20px;">
+                    <i class="fas fa-users" style="font-size: 4rem; color: #667eea; margin-bottom: 20px;"></i>
+                    <h3>Team Information Coming Soon</h3>
+                    <p>We're updating our team profiles. Check back soon to meet our amazing team!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="join-team-cta section-padding" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+    <div class="container text-center">
+        <h2 class="bounce-in">Join Our Team</h2>
+        <p class="reveal-up" style="margin-bottom: 30px;">We're always looking for talented individuals to join our growing team</p>
+        <a href="{% url 'contact' %}" class="btn btn-professional" style="background: white; color: #667eea;">Send Your CV</a>
+    </div>
+</section>
+
+<style>
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.member-skills .badge {
+    transition: all 0.3s ease;
+}
+
+.member-skills .badge:hover {
+    transform: scale(1.1);
+}
+</style>
+{% endblock %}

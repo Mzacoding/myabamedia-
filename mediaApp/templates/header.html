@@ -1,27 +1,48 @@
-<header class="header">
-    <div class="container">
-        <div class="logo">
-            {# Replaced text with an image tag for the logo #}
-            {% load static %}
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/MyabaLogo.png' %}" alt="Myaba Media Tech" class="header-logo">
-            </a>
-        </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
-                <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About Us</a></li>
-                <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
-                <li><a href="{% url 'portfolio' %}" class="{% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}">Portfolio</a></li>
-                <li><a href="{% url 'news' %}" class="{% if request.resolver_match.url_name == 'news' %}active{% endif %}">News</a></li>
-                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
-            </ul>
-        </nav>
-        {# Mobile menu toggle (hamburger icon) #}
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-gray-200 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                {% load static %}
+                <a href="{% url 'home' %}" class="flex items-center space-x-3 hover:scale-105 transition-transform">
+                    <img src="{% static 'images/MyabaLogo.png' %}" alt="Myaba Media Tech" class="h-10 w-auto">
+                    <span class="text-xl font-display font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Myaba Media</span>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-info-circle mr-2"></i>About
+                </a>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-cogs mr-2"></i>Services
+                </a>
+                <a href="{% url 'portfolio' %}" class="{% if request.resolver_match.url_name == 'portfolio' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-briefcase mr-2"></i>Portfolio
+                </a>
+                <a href="{% url 'news' %}" class="{% if request.resolver_match.url_name == 'news' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-newspaper mr-2"></i>News
+                </a>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}text-primary border-b-2 border-primary{% else %}text-gray-700 hover:text-primary{% endif %} px-3 py-2 text-sm font-medium transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>Contact
+                </a>
+            </nav>
+            
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="document.getElementById('search-overlay').style.display='block'" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-600 transition-colors">
+                    <i class="fas fa-search mr-2"></i>Search
+                </button>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menuToggle" class="text-gray-700 hover:text-primary focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </header>

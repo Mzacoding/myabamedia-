@@ -1,0 +1,228 @@
+/* Professional Color Scheme */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+    --accent-gradient: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+    
+    --primary-color: #667eea;
+    --primary-dark: #5a6fd8;
+    --secondary-color: #764ba2;
+    --secondary-dark: #6a4190;
+    
+    --text-primary: #2c3e50;
+    --text-secondary: #555;
+    --text-light: #777;
+    
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --bg-dark: #1a1a1a;
+    
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow-medium: 0 8px 25px rgba(0,0,0,0.15);
+    --shadow-heavy: 0 20px 40px rgba(0,0,0,0.2);
+    
+    --border-radius: 15px;
+    --border-radius-small: 8px;
+    --border-radius-large: 25px;
+}
+
+/* Consistent color application */
+.hero {
+    background: var(--primary-gradient), url("../images/background.c91ec5686aa3.png");
+    background-blend-mode: overlay;
+}
+
+.btn-modern, .btn-professional {
+    background: var(--primary-gradient) !important;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-modern:hover, .btn-professional:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%) !important;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: var(--secondary-gradient) !important;
+}
+
+.stats-counter {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-medium);
+}
+
+.interactive-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.interactive-card:hover {
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Section backgrounds with consistent colors */
+.who-we-are-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.key-services-section {
+    background: var(--bg-white);
+}
+
+.testimonials-section {
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf6 100%);
+}
+
+.cta-section {
+    background: var(--primary-gradient), url("../images/pcGlass.23cfdd27ff4b.jpg");
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Dark theme colors */
+body.dark-theme {
+    --bg-white: #2c2c2c;
+    --bg-light: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-light: #888;
+}
+
+.dark-theme .interactive-card {
+    background: rgba(44, 44, 44, 0.9);
+    border: 1px solid #444;
+    color: var(--text-primary);
+}
+
+.dark-theme .glass {
+    background: rgba(44, 44, 44, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .who-we-are-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+}
+
+.dark-theme .testimonials-section {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+/* Consistent spacing */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-padding-small {
+    padding: 60px 0;
+}
+
+.section-padding-large {
+    padding: 100px 0;
+}
+
+/* Professional gradients for various elements */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-border {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box, var(--primary-gradient) border-box;
+}
+
+.gradient-shadow {
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+/* Consistent form styling */
+.form-control {
+    border: 2px solid #e1e5e9;
+    border-radius: var(--border-radius-small);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Professional badges */
+.badge {
+    border-radius: var(--border-radius-large);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background: var(--primary-gradient);
+}
+
+.badge-secondary {
+    background: var(--secondary-gradient);
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+/* Consistent animations */
+.smooth-transition {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media queries for consistent responsive design */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .section-padding-large {
+        padding: 80px 0;
+    }
+}
