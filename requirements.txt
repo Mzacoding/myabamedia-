@@ -8,7 +8,7 @@ psycopg2-binary==2.9.9
 
 # Static Files and Media
 whitenoise==6.5.0
-Pillow==10.1.0
+Pillow==10.4.0
 
 # Production Server
 gunicorn==23.0.0
