@@ -1,95 +1,154 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}News - {{ newspaper_name }}{% endblock %}
+{% block title %}News | {{ company_name }}{% endblock %}
 
 {% block content %}
-<section class="news-hero parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/news.jpg' %}');">
-    <div class="container">
-        <h1 class="text-gradient">{{ newspaper_name }}</h1>
-        <p style="color: white; font-size: 1.2rem;">Your trusted source for local news and community updates</p>
+<!-- Hero Section -->
+<section class="pt-16 bg-gradient-to-br from-blue-50 to-white py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">The Highveld Chronicle</h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Stay informed with the latest news and updates from Delmas and the Nkangala District Municipality.
+        </p>
     </div>
 </section>
 
-<section class="news-content" style="padding: 80px 0;">
-    <div class="container">
-        <div class="section-header">
-            <h2>Latest News</h2>
-            <p>Stay informed with the latest happenings in the Nkangala District Municipality</p>
-        </div>
-        
-        <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-            {% for article in articles %}
-            <article class="news-item interactive-card hover-lift">
-                {% if article.featured_image %}
-                <div class="news-image" style="height: 200px; background: url('{{ article.featured_image.url }}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                {% else %}
-                <div class="news-image" style="height: 200px; background: url('{% static 'images/newspaper.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                {% endif %}
-                
-                <div class="news-content" style="padding: 25px;">
-                    <div class="news-meta" style="margin-bottom: 15px;">
-                        <span class="badge badge-primary">{{ article.published_at|date:"M d, Y" }}</span>
-                        <span class="badge badge-secondary">{{ article.author }}</span>
+<!-- News Content -->
+<section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Featured News -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Latest Edition</h2>
+            
+            <div class="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-4">
+                            <i class="fas fa-newspaper mr-2"></i>
+                            Latest Issue
+                        </div>
+                        
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            The Highveld Chronicle - Current Edition
+                        </h3>
+                        
+                        <p class="text-lg text-gray-600 mb-6">
+                            Our latest publication featuring local news, community events, business spotlights, 
+                            and important updates from across the Nkangala District Municipality.
+                        </p>
+                        
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-calendar-alt mr-3 text-blue-600"></i>
+                                <span>Published Monthly</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-map-marker-alt mr-3 text-blue-600"></i>
+                                <span>Covering Delmas & Surrounding Areas</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-users mr-3 text-blue-600"></i>
+                                <span>Community-Focused Content</span>
+                            </div>
+                        </div>
+                        
+                        <!-- PDF Download Placeholder -->
+                        <div class="bg-blue-50 border-2 border-dashed border-blue-300 rounded-lg p-6 text-center">
+                            <i class="fas fa-file-pdf text-4xl text-blue-600 mb-4"></i>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">PDF Coming Soon</h4>
+                            <p class="text-gray-600 mb-4">
+                                The latest edition of The Highveld Chronicle will be available for download here.
+                            </p>
+                            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold opacity-50 cursor-not-allowed" disabled>
+                                <i class="fas fa-download mr-2"></i>Download PDF
+                            </button>
+                            <p class="text-sm text-gray-500 mt-2">Upload your news.pdf file to activate download</p>
+                        </div>
                     </div>
                     
-                    <h3 style="margin-bottom: 15px; color: #2c3e50;">{{ article.title }}</h3>
-                    <p style="color: #666; line-height: 1.6;">{{ article.excerpt }}</p>
-                    
-                    <div style="margin-top: 20px;">
-                        <a href="#" class="btn btn-modern" style="font-size: 0.9rem; padding: 8px 20px;">Read More</a>
+                    <div class="relative">
+                        <!-- Newspaper Preview Mockup -->
+                        <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                            <div class="bg-gray-800 text-white p-4 text-center">
+                                <h4 class="font-bold text-lg">THE HIGHVELD CHRONICLE</h4>
+                                <p class="text-sm opacity-75">Your Local News Source</p>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+                                <div class="h-3 bg-gray-200 rounded w-full"></div>
+                                <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                                <div class="h-20 bg-gray-100 rounded"></div>
+                                <div class="h-3 bg-gray-200 rounded w-4/5"></div>
+                                <div class="h-3 bg-gray-200 rounded w-full"></div>
+                                <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </article>
-            {% empty %}
-            <div class="col-12 text-center" style="grid-column: 1 / -1;">
-                <div class="glass" style="padding: 60px; border-radius: 20px;">
-                    <i class="fas fa-newspaper" style="font-size: 4rem; color: #667eea; margin-bottom: 20px;"></i>
-                    <h3>Coming Soon</h3>
-                    <p>We're preparing exciting news content for you. Check back soon!</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
         
-        {% if articles %}
-        <div class="text-center" style="margin-top: 50px;">
-            <a href="#" class="btn btn-modern">Load More Articles</a>
+        <!-- News Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-city text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Local News</h3>
+                <p class="text-gray-600">Stay updated with the latest happenings in Delmas and surrounding communities.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-briefcase text-green-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Spotlight</h3>
+                <p class="text-gray-600">Featuring local businesses, entrepreneurs, and economic developments in our area.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-calendar-check text-purple-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Community Events</h3>
+                <p class="text-gray-600">Information about upcoming events, festivals, and community gatherings.</p>
+            </div>
         </div>
-        {% endif %}
+        
+        <!-- Subscription Section -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Stay Connected</h2>
+            <p class="text-lg mb-8 opacity-90">
+                Get notified when new editions of The Highveld Chronicle are published.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" 
+                       class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600">
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="newsletter-signup" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 0; color: white;">
-    <div class="container text-center">
-        <h2>Stay Updated</h2>
-        <p style="margin-bottom: 30px;">Subscribe to our newsletter for the latest news and updates</p>
-        
-        <form class="newsletter-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 15px;">
-            <input type="email" placeholder="Enter your email address" style="flex: 1; padding: 15px; border: none; border-radius: 25px; outline: none;">
-            <button type="submit" class="btn" style="background: white; color: #667eea; border: none; padding: 15px 30px; border-radius: 25px; font-weight: 600;">Subscribe</button>
-        </form>
+<!-- Contact Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Have a News Tip?</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            We're always looking for interesting stories from our community. 
+            Contact us if you have news to share.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Submit a Story
+            </a>
+            <a href="mailto:news@myabamediatech.com" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-colors">
+                Email Newsroom
+            </a>
+        </div>
     </div>
 </section>
-
-<style>
-.news-meta .badge {
-    margin-right: 10px;
-    font-size: 0.8rem;
-}
-
-.newsletter-form input:focus {
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
-}
-
-@media (max-width: 768px) {
-    .newsletter-form {
-        flex-direction: column;
-    }
-    
-    .newsletter-form button {
-        width: 100%;
-    }
-}
-</style>
 {% endblock %}

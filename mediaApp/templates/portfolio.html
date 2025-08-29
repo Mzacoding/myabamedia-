@@ -1,176 +1,180 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Portfolio - {{ company_name }}{% endblock %}
+{% block title %}Portfolio | {{ company_name }}{% endblock %}
 
 {% block content %}
-<section class="portfolio-hero parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/PcCoding.jpg' %}');">
-    <div class="container">
-        <h1 class="text-gradient">Our Portfolio</h1>
-        <p style="color: white; font-size: 1.2rem;">Showcasing our best work and client success stories</p>
+<!-- Hero Section -->
+<section class="pt-16 bg-gradient-to-br from-blue-50 to-white py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Our Portfolio</h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover the innovative projects we've delivered for clients across Delmas and beyond.
+        </p>
     </div>
 </section>
 
-<section class="portfolio-grid" style="padding: 80px 0; background: #f8f9fa;">
-    <div class="container">
-        <div class="section-header">
-            <h2>Featured Projects</h2>
-            <p>A selection of our most impactful work across various industries</p>
+<!-- Portfolio Grid -->
+<section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                    <i class="fas fa-globe text-4xl text-blue-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-3">
+                        Web Development
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Business Website</h3>
+                    <p class="text-gray-600 mb-4">Modern responsive website for local business with e-commerce functionality.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                    <i class="fas fa-paint-brush text-4xl text-purple-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-3">
+                        Graphic Design
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Brand Identity</h3>
+                    <p class="text-gray-600 mb-4">Complete brand identity package including logo, business cards, and marketing materials.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-green-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                    <i class="fas fa-newspaper text-4xl text-green-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-3">
+                        Publishing
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Community Newsletter</h3>
+                    <p class="text-gray-600 mb-4">Monthly community newsletter design and digital distribution system.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-4xl text-orange-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-3">
+                        Mobile App
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Service App</h3>
+                    <p class="text-gray-600 mb-4">Mobile application for local service provider with booking and payment features.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-indigo-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center">
+                    <i class="fas fa-chart-line text-4xl text-indigo-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-3">
+                        Digital Marketing
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Marketing Campaign</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive digital marketing campaign resulting in 300% increase in online engagement.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-pink-200 hover:-translate-y-1 overflow-hidden">
+                <div class="h-48 bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
+                    <i class="fas fa-store text-4xl text-pink-600"></i>
+                </div>
+                <div class="p-6">
+                    <div class="inline-flex items-center px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm font-medium mb-3">
+                        E-commerce
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Online Store</h3>
+                    <p class="text-gray-600 mb-4">Full-featured e-commerce platform with inventory management and payment processing.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Numbers that showcase our commitment to delivering exceptional results.
+            </p>
         </div>
         
-        <div class="filter-tabs" style="text-align: center; margin-bottom: 50px;">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="web">Web Development</button>
-            <button class="filter-btn" data-filter="design">Graphic Design</button>
-            <button class="filter-btn" data-filter="news">News & Media</button>
-        </div>
-        
-        <div class="portfolio-items" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-            <div class="portfolio-item interactive-card" data-category="web">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/ecommence.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>E-Commerce Platform</h3>
-                    <p>Modern online store with payment integration and inventory management</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-primary">Django</span>
-                        <span class="badge badge-success">E-commerce</span>
-                    </div>
-                </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold gradient-text mb-2">500+</div>
+                <p class="text-gray-600">Projects Completed</p>
             </div>
-            
-            <div class="portfolio-item interactive-card" data-category="design">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/GraphicDesign.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>Brand Identity Design</h3>
-                    <p>Complete brand makeover including logo, business cards, and marketing materials</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-warning">Branding</span>
-                        <span class="badge badge-primary">Design</span>
-                    </div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold gradient-text mb-2">150+</div>
+                <p class="text-gray-600">Happy Clients</p>
             </div>
-            
-            <div class="portfolio-item interactive-card" data-category="news">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/news.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>The Highveld Chronicle</h3>
-                    <p>Digital news platform serving the Nkangala District Municipality</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-danger">News</span>
-                        <span class="badge badge-primary">Publishing</span>
-                    </div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold gradient-text mb-2">8+</div>
+                <p class="text-gray-600">Years Experience</p>
             </div>
-            
-            <div class="portfolio-item interactive-card" data-category="web">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/WebDesign.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>Corporate Website</h3>
-                    <p>Professional business website with CMS and SEO optimization</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-primary">Corporate</span>
-                        <span class="badge badge-success">SEO</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-item interactive-card" data-category="design">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/Office.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>Marketing Campaign</h3>
-                    <p>Comprehensive digital marketing campaign with social media graphics</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-warning">Marketing</span>
-                        <span class="badge badge-primary">Social Media</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-item interactive-card" data-category="web">
-                <div class="portfolio-image" style="height: 250px; background: url('{% static 'images/system.jpg' %}') center/cover; border-radius: 15px 15px 0 0;"></div>
-                <div class="portfolio-content" style="padding: 25px;">
-                    <h3>System Integration</h3>
-                    <p>Custom software solution for business process automation</p>
-                    <div class="portfolio-tags">
-                        <span class="badge badge-danger">System</span>
-                        <span class="badge badge-success">Automation</span>
-                    </div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold gradient-text mb-2">99%</div>
+                <p class="text-gray-600">Client Satisfaction</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="cta-section">
-    <div class="container">
-        <h2>Ready to Start Your Project?</h2>
-        <p>Let's discuss how we can bring your vision to life</p>
-        <a href="{% url 'contact' %}" class="btn btn-modern">Get Started Today</a>
+<!-- CTA Section -->
+<section class="py-16 sm:py-20 bg-blue-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
+        <p class="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Let's work together to create something amazing for your business.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Start Your Project
+            </a>
+            <a href="{% url 'services' %}" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                View Services
+            </a>
+        </div>
     </div>
 </section>
-
-<style>
-.filter-btn {
-    background: white;
-    border: 2px solid #667eea;
-    color: #667eea;
-    padding: 10px 20px;
-    margin: 0 10px 10px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-    background: #667eea;
-    color: white;
-}
-
-.portfolio-item {
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.portfolio-item.hidden {
-    display: none;
-}
-
-.portfolio-tags {
-    margin-top: 15px;
-}
-
-.portfolio-tags .badge {
-    margin-right: 8px;
-    margin-bottom: 5px;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            const filter = btn.dataset.filter;
-            
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.classList.remove('hidden');
-                    item.style.display = 'block';
-                } else {
-                    item.classList.add('hidden');
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-});
-</script>
 {% endblock %}
