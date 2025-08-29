@@ -4,26 +4,168 @@
 {% block title %}Services | {{ company_name }}{% endblock %}
 
 {% block content %}
-    <section id="services" class="services">
-        <div class="container">
-            <div class="services-title-wrapper">
-                <h3 class="services-title-bg">Our Services</h3>
-            </div>
-            <div class="services-grid">
-                {% for service in services %}
-                <div class="service-item {% if forloop.counter|divisibleby:2 %}even-layout{% else %}odd-layout{% endif %}">
-                    <div class="service-content-wrapper">
-                        <div class="service-image">
-                            <img src="{% static service.image_url %}" alt="{{ service.title }}" onerror="this.onerror=null;this.src='https://placehold.co/200x150/e0e0e0/333333?text={{ service.title|urlencode }}';" class="img-fluid">
-                        </div>
-                        <div class="service-text-content">
-                            <h4>{{ service.title }}</h4>
-                            <p>{{ service.description }}</p>
-                        </div>
-                    </div>
+<!-- Hero Section -->
+<section class="pt-16 bg-gradient-to-br from-blue-50 to-white py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            We offer comprehensive digital solutions to help your business thrive in the modern world.
+        </p>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Web Development -->
+            <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-code text-blue-600 text-2xl"></i>
                 </div>
-                {% endfor %}
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Development</h3>
+                <p class="text-gray-600 mb-6">
+                    Custom websites and web applications built with modern technologies. From simple business websites 
+                    to complex e-commerce platforms, we deliver solutions that work.
+                </p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>Responsive Design</li>
+                    <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>E-commerce Solutions</li>
+                    <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>Content Management Systems</li>
+                    <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>SEO Optimization</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
+                    Learn More
+                </a>
+            </div>
+            
+            <!-- Graphic Design -->
+            <div class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-palette text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Graphic Design</h3>
+                <p class="text-gray-600 mb-6">
+                    Creative visual solutions that capture your brand essence and communicate your message effectively. 
+                    From logos to marketing materials, we bring your vision to life.
+                </p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-purple-600 mr-2"></i>Logo Design</li>
+                    <li class="flex items-center"><i class="fas fa-check text-purple-600 mr-2"></i>Brand Identity</li>
+                    <li class="flex items-center"><i class="fas fa-check text-purple-600 mr-2"></i>Marketing Materials</li>
+                    <li class="flex items-center"><i class="fas fa-check text-purple-600 mr-2"></i>Print Design</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors inline-block">
+                    Learn More
+                </a>
+            </div>
+            
+            <!-- News Publishing -->
+            <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-newspaper text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">News Publishing</h3>
+                <p class="text-gray-600 mb-6">
+                    Professional media and publishing services through The Highveld Chronicle. We keep communities 
+                    informed and connected with reliable, local news coverage.
+                </p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-green-600 mr-2"></i>Local News Coverage</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-600 mr-2"></i>Community Events</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-600 mr-2"></i>Business Features</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-600 mr-2"></i>Digital Publishing</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-block">
+                    Learn More
+                </a>
+            </div>
+            
+            <!-- Digital Marketing -->
+            <div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-chart-line text-orange-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Digital Marketing</h3>
+                <p class="text-gray-600 mb-6">
+                    Strategic campaigns to boost your online presence and engagement. We help you reach your target 
+                    audience and grow your business through effective digital marketing.
+                </p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check text-orange-600 mr-2"></i>Social Media Marketing</li>
+                    <li class="flex items-center"><i class="fas fa-check text-orange-600 mr-2"></i>Content Strategy</li>
+                    <li class="flex items-center"><i class="fas fa-check text-orange-600 mr-2"></i>Online Advertising</li>
+                    <li class="flex items-center"><i class="fas fa-check text-orange-600 mr-2"></i>Analytics & Reporting</li>
+                </ul>
+                <a href="{% url 'contact' %}" class="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors inline-block">
+                    Learn More
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-16 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Process</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                We follow a proven process to ensure every project is delivered on time and exceeds expectations.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-blue-600">1</span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Consultation</h3>
+                <p class="text-gray-600">We discuss your needs and goals to understand your vision.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-purple-600">2</span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Planning</h3>
+                <p class="text-gray-600">We create a detailed plan and timeline for your project.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-green-600">3</span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Development</h3>
+                <p class="text-gray-600">Our team brings your project to life with regular updates.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl font-bold text-orange-600">4</span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Launch</h3>
+                <p class="text-gray-600">We deliver your completed project and provide ongoing support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 sm:py-20 bg-blue-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+        <p class="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Contact us today to discuss your project and see how we can help your business grow.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Get A Quote
+            </a>
+            <a href="tel:+27814109337" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                Call Now
+            </a>
+        </div>
+    </div>
+</section>
 {% endblock %}
